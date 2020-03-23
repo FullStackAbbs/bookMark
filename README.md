@@ -4,7 +4,7 @@ a tool created to help the avid book reader. bookMark is a web application that 
  
  ![ screenshot of application](https://github.com/FullStackAbbs/bookMark/blob/master/public/img/bookMarkProfile.png)
  
-# How It's Made:
+# How It's Made :
 HTML/EJS
 CSS
 Javascript

@@ -1,0 +1,67 @@
+<!-- NOTE: the format for this particular profile.ejs was modified from scotch-io node-note, where I alter and tested all my CRUD functionalities: https://rb.gy/lulz5p -->
+
+
+<!doctype html>
+<html>
+
+<head>
+  <title>bookMark</title>
+
+<link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <link rel="stylesheet" href="style.css">
+  <style media="screen">
+    body{ background: url("./img/bookMarkBKGND.png" )left top / cover no-repeat;
+  }
+  </style>
+</head>
+
+<body>
+  <section class="container">
+    <section class="text-left page-header">
+      <h1 id="hide">Breathe....  <%= user.local.email %></h1>
+      <a href="/logout" class="btn btn-default btn-sm" id="button1">Logout</a>
+
+    </section>
+    <section class="level">
+
+      <section class="JournalEntry">
+        <h2>What books are you currently interested in ?</h2>
+        <% if (user.local.email) { %>
+        <form action="/notes" method="POST">
+          <input id = "hide" class="userName" type="text" name="userName" value="<%= user.local.email %>"><br>
+          <!-- <input class="userName" type="text" name="userName" value="<%= user.local.email %>"> -->
+          <label for="noteTitle"> Book Name (Book Author): </label><br>
+          <input class="noteTitle" type="text" value="" name="noteTitle"><br>
+          <label for="noteBody"> Current Page: </label><br>
+          <input type="number" class="noteBody" placeholder="page number (numbers only)" name="noteBody" value=""><br>
+          <button type="submit">Submit</button>
+        </form>
+        <% } %>
+      </section>
+
+      <section class="JournalList">
+        <h3>Your Current Book List:</h3>
+        <span>  </span>
+        <ul class="messages">
+          <% for(var i=0; i<notes.length; i++) {%>
+          <li class="message">
+            <strong>
+              <span id="JournTitle">
+              <%= notes[i].title %></span></strong>
+            <button data-user="<%= user.local.email %>" class="editButton">Save Changes</button>
+            <i data-user="<%= user.local.email %>" class="far fa-trash-alt"></i><br>
+            <span contenteditable="true" > Page <%= notes[i].notebody %></span>
+          </li>
+          <% } %>
+        </ul>
+      </section>
+
+    </section>
+
+
+    <script src="main.js"></script>
+    <!-- <script src="https://kit.fontawesome.com/077191d827.js" crossorigin="anonymous"></script> -->
+</body>
+
+</html>
